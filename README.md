@@ -129,6 +129,13 @@ Cuando algo no estaba claro en el enunciado, tomé una decisión razonable y la 
 - Seeders para datos de prueba.
 - Pruebas automatizadas para los endpoints principales.
 
+	# CRUD de equipos
+- Horómetro inicial permitido al crear, prohibido al editar (responde 422).
+- codigo_interno y patente se normalizan a mayúsculas antes de validar la unicidad.
+- PUT y PATCH aceptan envíos parciales.
+- El listado está paginado (15 por página) y filtra por estado y tipo.
+- Eliminar un equipo con historial responde 409.
+
 ## Autor
 
 Luis Alfonso Navarro Arenas

@@ -1,7 +1,9 @@
 <?php
 
 use App\Http\Controllers\Api\AuthController;
+use App\Http\Controllers\Api\CargaCombustibleController;
 use App\Http\Controllers\Api\EquipoController;
+use App\Http\Controllers\Api\MantencionController;
 use Illuminate\Support\Facades\Route;
 
 Route::post('/login', [AuthController::class, 'login']);
@@ -12,4 +14,9 @@ Route::middleware('auth:sanctum')->group(function () {
     // Ojo: cuando agregue /equipos/mantencion-preventiva, debe declararse
     // ANTES de este apiResource, o {equipo} la interpretará como un id.
     Route::apiResource('equipos', EquipoController::class);
+
+    Route::apiResource('equipos.cargas-combustible', CargaCombustibleController::class)
+        ->only(['index', 'store']);
+    Route::apiResource('equipos.mantenciones', MantencionController::class)
+        ->only(['index', 'store']);
 });

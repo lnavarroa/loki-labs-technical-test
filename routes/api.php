@@ -1,14 +1,15 @@
 <?php
 
-use Illuminate\Http\Request;
+use App\Http\Controllers\Api\AuthController;
+use App\Http\Controllers\Api\EquipoController;
 use Illuminate\Support\Facades\Route;
 
-use App\Http\Controllers\Api\AuthController;
-
 Route::post('/login', [AuthController::class, 'login']);
- 
+
 Route::middleware('auth:sanctum')->group(function () {
     Route::post('/logout', [AuthController::class, 'logout']);
- 
-    // Aquí irán las rutas de equipos, cargas, mantenciones y reportes
+
+    // Ojo: cuando agregue /equipos/mantencion-preventiva, debe declararse
+    // ANTES de este apiResource, o {equipo} la interpretará como un id.
+    Route::apiResource('equipos', EquipoController::class);
 });

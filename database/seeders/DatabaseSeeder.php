@@ -15,5 +15,7 @@ class DatabaseSeeder extends Seeder
             ['email' => 'admin@construckit.test'],
             ['name' => 'Admin', 'password' => Hash::make('password')],
         );
+
+        $this->call(EquiposSeeder::class);
     }
 }
